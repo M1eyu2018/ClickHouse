@@ -330,3 +330,6 @@
 [submodule "contrib/crc32-vpmsum"]
 	path = contrib/crc32-vpmsum
 	url = https://github.com/antonblanchard/crc32-vpmsum.git
+[submodule "contrib/libhdfstesttool"]
+	path = contrib/libhdfstesttool
+	url = https://github.com/M1eyu2018/libhdfstesttool.git
