@@ -123,6 +123,13 @@ set(SRCS
     "${HDFS3_SOURCE_DIR}/client/StripedBlockUtil.cpp"
     "${HDFS3_SOURCE_DIR}/client/DataReader.cpp"
     "${HDFS3_SOURCE_DIR}/client/DataReader.h"
+    "${HDFS3_SOURCE_DIR}/client/AbstractNativeRawDecoder.cpp"
+    "${HDFS3_SOURCE_DIR}/client/AbstractNativeRawEncoder.cpp"
+    "${HDFS3_SOURCE_DIR}/client/dump.cpp"
+    "${HDFS3_SOURCE_DIR}/client/erasure_coder.cpp"
+    "${HDFS3_SOURCE_DIR}/client/NativeRSRawDecoder.cpp"
+    "${HDFS3_SOURCE_DIR}/client/NativeRSRawEncoder.cpp"
+    "${HDFS3_SOURCE_DIR}/client/RawErasureCoderFactory.cpp"
     ${PROTO_SOURCES}
 )
 
@@ -165,6 +172,12 @@ target_link_libraries(_hdfs3 PRIVATE ch_contrib::protobuf boost::headers_only)
 if (TARGET OpenSSL::SSL)
     target_link_libraries(_hdfs3 PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 endif()
+
+find_library(ISAL_LIBRARY NAMES libisal.so)
+if (ISAL_LIBRARY)
+    add_definitions(-DHADOOP_ISAL_LIBRARY)
+    target_link_libraries(_hdfs3 PRIVATE ${ISAL_LIBRARY})
+endif (ISAL_LIBRARY)
 
 add_library(ch_contrib::hdfs ALIAS _hdfs3)
 
