@@ -16,6 +16,7 @@ set(
     "${HDFS_TEST_TOOL_SOURCE_DIR}/task/ExcuteTask.cpp"
     "${HDFS_TEST_TOOL_SOURCE_DIR}/task/AppendTask.cpp"
     "${HDFS_TEST_TOOL_SOURCE_DIR}/task/ReadSameFileTask.cpp"
+    "${HDFS_TEST_TOOL_SOURCE_DIR}/task/RandomReadSameFileTask.cpp"
 )
 
 add_executable(bigo_libhdfs_test ${HDFS_TEST_TOOL_ROOT_DIR}/LibhdfsTest.cpp ${SRCS})

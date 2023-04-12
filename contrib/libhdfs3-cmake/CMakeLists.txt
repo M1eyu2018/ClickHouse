@@ -88,7 +88,6 @@ set(SRCS
     "${HDFS3_SOURCE_DIR}/common/WritableUtils.cpp"
     "${HDFS3_SOURCE_DIR}/common/ExceptionInternal.cpp"
     "${HDFS3_SOURCE_DIR}/common/SessionConfig.cpp"
-    "${HDFS3_SOURCE_DIR}/server/EncryptionKey.h"
     "${HDFS3_SOURCE_DIR}/common/IntelAsmCrc32c.h"
     "${HDFS3_SOURCE_DIR}/common/IntelAsmCrc32c.cpp"
     "${HDFS3_SOURCE_DIR}/common/StackPrinter.cpp"
@@ -121,8 +120,6 @@ set(SRCS
     "${HDFS3_SOURCE_DIR}/client/ByteBufferDecodingState.cpp"
     "${HDFS3_SOURCE_DIR}/client/StripeReader.cpp"
     "${HDFS3_SOURCE_DIR}/client/StripedBlockUtil.cpp"
-    "${HDFS3_SOURCE_DIR}/client/DataReader.cpp"
-    "${HDFS3_SOURCE_DIR}/client/DataReader.h"
     "${HDFS3_SOURCE_DIR}/client/AbstractNativeRawDecoder.cpp"
     "${HDFS3_SOURCE_DIR}/client/AbstractNativeRawEncoder.cpp"
     "${HDFS3_SOURCE_DIR}/client/dump.cpp"
@@ -173,7 +170,7 @@ if (TARGET OpenSSL::SSL)
     target_link_libraries(_hdfs3 PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 endif()
 
-find_library(ISAL_LIBRARY NAMES libisal.so)
+find_library(ISAL_LIBRARY NAMES isal)
 if (ISAL_LIBRARY)
     add_definitions(-DHADOOP_ISAL_LIBRARY)
     target_link_libraries(_hdfs3 PRIVATE ${ISAL_LIBRARY})
