@@ -338,3 +338,6 @@
 [submodule "contrib/isa-l"]
 	path = contrib/isa-l
 	url = https://github.com/intel/isa-l.git
+[submodule "contrib/libhdfstesttool"]
+	path = contrib/libhdfstesttool
+	url = https://github.com/M1eyu2018/libhdfstesttool.git
