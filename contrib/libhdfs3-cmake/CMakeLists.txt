@@ -172,11 +172,8 @@ if (TARGET OpenSSL::SSL)
     target_link_libraries(_hdfs3 PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 endif()
 
-find_library(ISAL_LIBRARY NAMES isal)
-if (ISAL_LIBRARY)
-    add_definitions(-DHADOOP_ISAL_LIBRARY)
-    target_link_libraries(_hdfs3 PRIVATE ${ISAL_LIBRARY})
-endif (ISAL_LIBRARY)
+target_link_libraries(_hdfs3 PRIVATE ch_contrib::isal)
+add_definitions(-DHADOOP_ISAL_LIBRARY)
 
 add_library(ch_contrib::hdfs ALIAS _hdfs3)
 
