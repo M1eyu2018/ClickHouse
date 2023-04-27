@@ -5,6 +5,12 @@ include(CheckLanguage)
 check_language(ASM_NASM)
 if(NOT CMAKE_ASM_NASM_COMPILER)
     message(FATAL_ERROR "Please install NASM from 'https://www.nasm.us/' because NASM compiler can not be found!")
+else()
+    # check again because ASM_NASM maybe yasm, not nasm
+    find_program(NASM_PATH NAMES nasm)
+    if (NOT NASM_PATH)
+        message(FATAL_ERROR "Please install NASM from 'https://www.nasm.us/' because NASM compiler can not be found!")
+    endif()
 endif()
 
 enable_language(ASM_NASM)
